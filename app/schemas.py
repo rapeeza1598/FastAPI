@@ -113,4 +113,4 @@ class updateChargingSession(BaseModel):
     status: Optional[str]
 
 class TokenData(BaseModel):
-    email: Optional[str] = None
+    email: str | None = None
