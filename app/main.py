@@ -13,9 +13,11 @@ app = FastAPI()
 
 origins = [
     "http://localhost",
+    "http://localhost:3000",
     "http://localhost:8000",
     "https://example.com",
     "https://staging.example.com",
+    "ev-dashboard-ten.vercel.app",
 ]
 
 app.add_middleware(
