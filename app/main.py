@@ -18,6 +18,7 @@ origins = [
     "https://example.com",
     "https://staging.example.com",
     "ev-dashboard-ten.vercel.app",
+    "*",
 ]
 
 app.add_middleware(
