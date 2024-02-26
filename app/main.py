@@ -106,6 +106,11 @@ async def topup_user_balance(user_id: str, amount: float, db: Session = Depends(
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     amount_decimal = Decimal(amount)
+    # save transaction
+    transaction = schemas.createTransaction(userId=user_id,amount=amount_decimal,transactionType="topup",description="User balance topup")
+    db_transaction = crud.create_transaction(db, transaction)
+    if not db_transaction:
+        raise HTTPException(status_code=400, detail="Transaction not created")
     user.balance += amount_decimal
     db.commit()
     return {"message": "User balance updated successfully"}
